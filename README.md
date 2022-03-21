@@ -1,4 +1,4 @@
-# YUOR GYM
+# yoyr_gym
 
 ## サイト概要
 スポーツジムのSNSサイトです。
