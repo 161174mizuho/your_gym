@@ -1,4 +1,5 @@
 # yoyr_gym
+!{width:500px}your-gym_image.jpg!
 
 ## サイト概要
 スポーツジムのSNSサイトです。
@@ -27,7 +28,7 @@
 さらには、その投稿内容などを会員様だけではなく、未入会者にも見てもらうことにより運営側の顧客調査や、販促活動の一環としても使用できると思い今回のテーマを選びました。
 
 
-###利用方法
+### 利用方法
 利用者：新規登録を行いジム一覧からジムと、店舗側で登録したマシンを選び投稿します。店舗ページからマシン別のトレーニング投稿一覧・鍛える部位別のトレーニング投稿一覧を閲覧することができます。
 投稿の詳細ページからコメントやいいねをすることができます。
 
@@ -44,7 +45,6 @@
 トレーニング中や、トレーニングのモチベーションを上げたいとき。また、運営側の販促活動や顧客満足度向上のためにも活用できます。
 
 ## 設計書
-<...>
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1YTGkLJCHeZAEyDc4bRM5cLQfGhxJsAYPfZ7mA5-DMRk/edit?usp=sharing
@@ -52,5 +52,5 @@ https://docs.google.com/spreadsheets/d/1YTGkLJCHeZAEyDc4bRM5cLQfGhxJsAYPfZ7mA5-D
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,Ruby,SQL
-- フレームワーク：Ruby on Rails
+- フレームワーク：Ruby on Rails,Bootstrap
 - IDE：Cloud9

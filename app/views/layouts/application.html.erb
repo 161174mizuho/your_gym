@@ -6,27 +6,69 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
+
+  <body class="d-flex flex-column vh-100">
+    <header class="bg-warning text-black pt-4 pb-4">
+      <nav class="navbar">
+        <div class="container">
+          <h1 class="naver\brand">your_gym</h1>
+        <!--  <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
+        <!--    <span class="navbar-toggler-icon"></span>-->
+        <!--  </button>-->
+        <!--  <div class="collapse navbar-collapse" id="navbarNavDropdown">-->
+        <!--  <ul class="navbar-nav ml-auto">-->
+        <!--  </ul>-->
+        <!--</div>-->
+      <ul class="row list-unstyled">
       <% if admin_signed_in? %>
       <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        <%= link_to "マイページ", admin_top_path, class:"btn btn-dark mx-2" %>
+      </li>
+      <li>
+        <%= link_to "マシン一覧", admin_machines_path, class:"btn btn-dark mx-2" %>
+      </li>
+      <li>
+        <%= link_to "投稿一覧", admin_posts_path, class:"btn btn-dark mx-2" %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"btn btn-dark mx-2" %>
+      </li>
+      <% elsif member_signed_in? %>
+      <li>
+        <%= link_to "マイページ", public_top_path, class:"btn btn-dark mx-2" %>
+      </li>
+      <li>
+        <%= link_to "ジム一覧", public_gyms_path, class:"btn btn-dark mx-2" %>
+      </li>
+      <li>
+        <%= link_to "投稿一覧", public_posts_path, class:"btn btn-dark mx-2" %>
+      </li>
+      <li>
+        <%= link_to "ログアウト", destroy_member_session_path, method: :delet, class:"btn btn-dark mx-2" %>
       </li>
       <% else %>
       <li>
-        <%= link_to "新規登録", new_admin_session_path %>
+        <%= link_to "top", root_path, class:"btn btn-dark mx-2" %>
       </li>
-      <% end %>
-      <% if member_signed_in? %>
       <li>
-        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        <%= link_to "投稿一覧を見る", public_posts_path, class:"btn btn-dark mx-2" %>
+      </li>
+      <li>
+        <%= link_to "ジム一覧を見る", public_gyms_path, class:"btn btn-dark mx-2" %>
       </li>
       <% end %>
+        </nav>
+      </div>
     </header>
     <%= yield %>
+    <footer class="bg-warning text-black pt-5 pb-4">
+      <div class="container">
+        <p>作成：粕谷みずほ</p>
+      </div>
+    </footer>
   </body>
 </html>
