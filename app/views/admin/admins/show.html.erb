@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6 my-4 d-flex align-items-center justify-content-center">
+      <h1>
+        <%= @admin.gym_name %></br>
+        <%= @admin.email %></br>
+      <%= link_to "店舗情報編集", edit_admin_admin_path(@admin), class:"btn btn-success" %>
+      </h1>
+    </div>
+    <div class="col-6 my-4 d-flex align-items-center justify-content-center">
+        <% if @admin.gym_image.attached? %>
+          <%= image_tag @admin.gym_image, size: "300×300" %>
+        <% else %>
+          <%= image_tag "no_image", size:"300×300" %>
+        <% end %>
+    </div>
+  </div>
+</div>

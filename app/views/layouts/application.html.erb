@@ -26,7 +26,7 @@
       <ul class="row list-unstyled">
       <% if admin_signed_in? %>
       <li>
-        <%= link_to "マイページ", admin_top_path, class:"btn btn-dark mx-2" %>
+        <%= link_to "マイページ", admin_admin_path(current_admin), class:"btn btn-dark mx-2" %>
       </li>
       <li>
         <%= link_to "マシン一覧", admin_machines_path, class:"btn btn-dark mx-2" %>
@@ -48,7 +48,7 @@
         <%= link_to "投稿一覧", public_posts_path, class:"btn btn-dark mx-2" %>
       </li>
       <li>
-        <%= link_to "ログアウト", destroy_member_session_path, method: :delet, class:"btn btn-dark mx-2" %>
+        <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class:"btn btn-dark mx-2" %>
       </li>
       <% else %>
       <li>
