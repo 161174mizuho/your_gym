@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row my-5">
+    <div class="col-6">
+      <%= form_with model: @site do |f| %>
+        <h4>部位登録</h4>
+          <%= f.text_field :site_name%>
+          <%= f.submit "登録", class:"ml-2 btn btn-success" %>
+      <% end %>
+      <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th>部位一覧</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @sites.each do |site| %>
+        <tbody>
+          <tr>
+            <td><%= site.site_name %></td>
+            <td><%= link_to "削除" ,site_path(site), method: :delete, class:"btn btn-danger" %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+        <%= paginate @sites %>
+    </div>
+    <div class="col-6 d-flex align-items-center justify-content-center">
+      <%= image_tag "site-image" %>
+    </div>
+</div>

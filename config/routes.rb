@@ -14,10 +14,10 @@ Rails.application.routes.draw do
     resources :gyms, only: [:index, :show]
   end
 
-  namespace :admin do
+  scope module: :admin do
     resources :admins, only: [:edit, :update, :show]
     resources :machines, only: [:index, :create, :edit, :update, :show]
-    resources :posts, only: [:index, :show]
+    resources :sites, only: [:new, :create, :destroy]
   end
   root to: "public/homes#about"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

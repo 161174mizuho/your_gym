@@ -4,6 +4,9 @@ class Admin::AdminsController < ApplicationController
   end
 
   def update
+    admin = Admin.find(params[:id])
+    admin.update(admin_params)
+    redirect_to admin_path(admin)
   end
 
   def show
