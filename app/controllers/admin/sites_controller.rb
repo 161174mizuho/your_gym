@@ -6,10 +6,14 @@ class Admin::SitesController < ApplicationController
 
   def create
     @site = Site.new
+    @sites = Site.page(params[:page])
     site = Site.new(site_params)
     site.admin_id = current_admin.id
-    site.save
-    redirect_to new_site_path
+    if site.save
+      redirect_to new_site_path
+    else
+      render :new
+    end
   end
   
   def destroy

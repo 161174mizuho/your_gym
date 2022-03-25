@@ -1,0 +1,7 @@
+ja:
+  enums:
+    machine:
+      machine_status:
+        used_ok: "使用可能"
+        used_ng: "故障中"
+        used_schedule: "導入予定"

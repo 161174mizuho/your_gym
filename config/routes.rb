@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   scope module: :admin do
     resources :admins, only: [:edit, :update, :show]
-    resources :machines, only: [:index, :create, :edit, :update, :show]
+    resources :machines, only: [:new, :create, :edit, :update, :show]
     resources :sites, only: [:new, :create, :destroy]
   end
   root to: "public/homes#about"

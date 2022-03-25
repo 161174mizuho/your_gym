@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row my-5">
+    <div class="col-6 d-flex align-items-center justify-content-center">
+      <% if @machine.errors.any? %>
+      <%= @machine.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @machine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+      <% end %>
+      <%= form_with model: @machine do |f| %>
+        <p>マシン名</p>
+        <%= f.text_field :machine_name, class:"mb-3" %>
+        <p>部位</p>
+        <%= f.collection_select(:site_id, Site.all, :id,:site_name,prompt: "選択してください") %>
+        <p class="mt-3">説明</p>
+        <%= f.text_area :explanation, class:"mb-3" %>
+        <p class="mt-3">マシン画像</p>
+        <%= f.file_field :machine_image, accept: "image/*" ,class:"mb-3" %>
+        <%= f.submit "登録", class:"ml-2 btn btn-success" %>
+      <% end %>
+
+    </div>
+    <div class="col-6">
+      <h4>マシン一覧</h4>
+      <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th>マシン名</th>
+            <th>部位</th>
+            <th>ステータス</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @machines.each do |machine| %>
+          <tr>
+            <td><%= link_to machine.machine_name, machine_path(machine), class:"text-dark stretched-link" %></td>
+            <td><%= machine.site.site_name %></td>
+            <td><%= machine.machine_status_i18n %></td>
+            <td><%= link_to "編集", edit_machine_path(machine), class:"btn btn-primary" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
