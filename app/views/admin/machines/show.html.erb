@@ -1,2 +1,24 @@
-<h1>Admin::Machines#show</h1>
-<p>Find me in app/views/admin/machines/show.html.erb</p>
+<div class="container">
+  <div class="row my-5">
+    <div class="col-6">
+      <h1>
+      <%= @machine.machine_name %>
+      <%= link_to "編集", edit_machine_path(@machine), class:"btn btn-primary ml-4" %>
+      <%= link_to "削除" ,machine_path(@machine), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-danger ml-4" %>
+      </h1>
+      <table class="table h4">
+          <tr>
+            <th>部位</th>
+            <td><%= @machine.site.site_name %></td>
+          </tr>
+          <tr>
+            <th>説明</th>
+            <td><%= @machine.explanation %></td>
+          </tr>
+      </table>
+    </div>
+    <div class="col-6">
+      <%= image_tag @machine.machine_image %>
+    </div>
+  </div>
+</div>

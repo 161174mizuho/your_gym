@@ -15,7 +15,12 @@
     <header class="bg-warning text-black pt-4 pb-4">
       <nav class="navbar">
         <div class="container">
-          <h1 class="naver\brand">your_gym</h1>
+          <% if current_admin %>
+            <h1 class="naver\brand">your_gym / <%= current_admin.gym_name %></h1>
+          <% else %>
+            <h1 class="naver\brand">your_gym</h1>
+          <% end %>
+
         <!--  <button class="navbar-toggler bg-white" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
         <!--    <span class="navbar-toggler-icon"></span>-->
         <!--  </button>-->

@@ -1,21 +1,27 @@
 class Admin::SitesController < ApplicationController
   def new
     @site = Site.new
+    @sites = current_admin.sites.page(params[:page])
+  end
+
+  def index
+    @site = Site.new
     @sites = Site.page(params[:page])
+    render :new
   end
 
   def create
-    @site = Site.new
+    # @site = Site.new
     @sites = Site.page(params[:page])
-    site = Site.new(site_params)
-    site.admin_id = current_admin.id
-    if site.save
+    @site = Site.new(site_params)
+    @site.admin_id = current_admin.id
+    if @site.save
       redirect_to new_site_path
     else
       render :new
     end
   end
-  
+
   def destroy
     site = Site.find(params[:id])
     site.destroy
@@ -25,6 +31,6 @@ class Admin::SitesController < ApplicationController
 private
 
 def site_params
-  params.require(:site).permit(:admin_id,:site_name)
+  params.require(:site).permit(:site_name)
 end
 end
