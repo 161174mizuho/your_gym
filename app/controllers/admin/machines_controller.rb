@@ -1,4 +1,4 @@
-class Admin::MachinesController < ApplicationController
+class Admin::MachinesController < Admin::AdminApplicationController
   def new
     @machine = Machine.new
     @machines = current_admin.machines.page(params[:page])

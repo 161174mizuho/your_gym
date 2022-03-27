@@ -1,4 +1,5 @@
-class Admin::AdminsController < ApplicationController
+class Admin::AdminsController < Admin::AdminApplicationController
+
   def edit
     @admin = Admin.find(params[:id])
   end

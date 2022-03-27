@@ -1,4 +1,5 @@
-class Admin::SitesController < ApplicationController
+class Admin::SitesController < Admin::AdminApplicationController
+  before_action :authenticate_admin!
   def new
     @site = Site.new
     @sites = current_admin.sites.page(params[:page])
