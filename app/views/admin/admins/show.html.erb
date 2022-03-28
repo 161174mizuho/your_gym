@@ -8,11 +8,7 @@
       </h1>
     </div>
     <div class="col-6 my-4 d-flex align-items-center justify-content-center">
-        <% if @admin.gym_image.attached? %>
-          <%= image_tag @admin.gym_image, size: "300×300" %>
-        <% else %>
-          <%= image_tag "no_image", size:"300×300" %>
-        <% end %>
+      <%= image_tag @admin.get_gym_image(100,100) %>
     </div>
   </div>
 </div>

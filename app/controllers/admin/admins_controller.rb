@@ -1,5 +1,12 @@
 class Admin::AdminsController < Admin::AdminApplicationController
 
+  def index
+  end
+  
+  def show
+    @admin = Admin.find(params[:id])
+  end
+
   def edit
     @admin = Admin.find(params[:id])
   end
@@ -8,10 +15,6 @@ class Admin::AdminsController < Admin::AdminApplicationController
     admin = Admin.find(params[:id])
     admin.update(admin_params)
     redirect_to admin_path(admin)
-  end
-
-  def show
-    @admin = Admin.find(params[:id])
   end
 
   private

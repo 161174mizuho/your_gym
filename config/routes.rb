@@ -9,13 +9,13 @@ Rails.application.routes.draw do
 }
 
   namespace :public do
-    get "top" => "homes#top", as: "top"
-    resources :posts, except: [:destroy]
+    resources :posts, only: [:new, :index, :show, :destroy]
     resources :gyms, only: [:index, :show]
+    resources :members, only: [:new, :show, :edit, :update]
   end
 
   scope module: :admin do
-    resources :admins, only: [:edit, :update, :show]
+    resources :admins, only: [:edit, :update, :show, :index]
     resources :machines, only: [:new, :create, :edit, :update, :show, :index, :destroy]
     resources :sites, only: [:new, :create, :destroy, :index]
   end

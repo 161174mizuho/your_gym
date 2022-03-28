@@ -1,2 +1,18 @@
-<h1>Public::Gyms#index</h1>
-<p>Find me in app/views/public/gyms/index.html.erb</p>
+<div class="container">
+  <div class="row my-5">
+    <% @gyms. each do |gym| %>
+    <div class="col-4">
+      <table>
+        <tr>
+          <td><%= image_tag gym.gym_image %></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="text-center"><%= link_to gym.gym_name, public_gym_path(gym) %></td>
+        </tr>
+      </table>
+    </div>
+    <% end %>
+  </div>
+  <%= paginate @gyms %>
+</div>

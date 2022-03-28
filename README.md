@@ -1,4 +1,3 @@
-# yoyr_gym
 !{width:500px}your-gym_image.jpg!
   
 ## サイト概要

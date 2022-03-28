@@ -44,7 +44,7 @@
       </li>
       <% elsif member_signed_in? %>
       <li>
-        <%= link_to "マイページ", public_top_path, class:"btn btn-dark mx-2" %>
+        <%= link_to "マイページ", public_member_path(current_member), class:"btn btn-dark mx-2" %>
       </li>
       <li>
         <%= link_to "ジム一覧", public_gyms_path, class:"btn btn-dark mx-2" %>

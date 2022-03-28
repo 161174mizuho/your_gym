@@ -5,6 +5,6 @@ class Public::PostsController < ApplicationController
   def index
   end
 
-  def showedit
+  def show
   end
 end
