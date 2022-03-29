@@ -1,18 +1,15 @@
 <div class="container">
-  <div class="row my-5">
     <% @gyms. each do |gym| %>
+  <div class="row my-5 border-bottom border-dark">
     <div class="col-4">
-      <table>
-        <tr>
-          <td><%= image_tag gym.gym_image %></td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="text-center"><%= link_to gym.gym_name, public_gym_path(gym) %></td>
-        </tr>
-      </table>
+      <%= image_tag gym.get_gym_image(300,300), class:"mb-5" %>
+    </div>
+    <div class="col-8">
+      <h1><%= link_to gym.gym_name, public_gym_path(gym) %></h1></br>
+      <h3>登録マシン数 <%= gym.machines.count %> 種類</h3></br>
+      <h3>投稿数</h3>
+    </div>
     </div>
     <% end %>
-  </div>
   <%= paginate @gyms %>
 </div>

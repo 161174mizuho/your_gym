@@ -10,8 +10,21 @@
         <%= f.text_field :machine_name %>
       </div>
       <div class="field mb-4">
+        <h4>部位</h4>
+        <%= f.collection_select(:site_id, Site.all, :id,:site_name,prompt: "選択してください") %>
+      </div>
+      <div class="field mb-4">
         <h4>説明</h4>
         <%= f.text_field :explanation %>
+      </div>
+      <div class="field mb-4">
+        <h4>ステータス</h4>
+        <%= f.radio_button :machine_status, "used_ok" %>
+        <%= f.label :machine_status, "使用可能", value: 0 %>
+        <%= f.radio_button :machine_status, "used_ng" %>
+        <%= f.label :machine_status, "故障中", value: 1 %>
+        <%= f.radio_button :machine_status, "used_schedule" %>
+        <%= f.label :machine_status, "導入予定", value: 2 %>
       </div>
       <div class="field mb-4">
         <h4>マシン画像</h4>
@@ -22,9 +35,8 @@
       </div>
       <% end %>
     </div>
-      <div class="col-4">
-        <p>現在のマシン画像</p>
-        <%= image_tag @machine.machine_image %>
+      <div class="col-4 d-flex align-items-center justify-content-center">
+        <%= image_tag @machine.get_machine_image(400,400) %>
       </div>
   </div>
 </div>

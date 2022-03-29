@@ -23,11 +23,7 @@
       <% end %>
     </div>
       <div class="col-4">
-        <% if @member.icon.attached? %>
-        <%= image_tag @member.icon %>
-      <% else %>
-        <%= image_tag "no_image", size:"200×200" %>
-      <% end %>
+      <%= image_tag @member.get_icon(400,400) %>
       </div>
   </div>
 </div>

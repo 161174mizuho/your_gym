@@ -15,10 +15,14 @@
             <th>説明</th>
             <td><%= @machine.explanation %></td>
           </tr>
+          <tr class="border-bottom">
+            <th>ステータス</th>
+            <td><%= @machine.machine_status_i18n %></td>
+          </tr>
       </table>
     </div>
-    <div class="col-6">
-      <%= image_tag @machine.machine_image %>
+    <div class="col-6 d-flex align-items-center justify-content-center">
+      <%= image_tag @machine.get_machine_image(400,400) %>
     </div>
   </div>
 </div>

@@ -45,6 +45,6 @@ class Admin::MachinesController < Admin::AdminApplicationController
 private
 
 def machine_params
-  params.require(:machine).permit(:admin_id, :site_id, :machine_name, :machine_image, :explanation)
+  params.require(:machine).permit(:admin_id, :site_id, :machine_name, :machine_image, :explanation, :machine_status)
 end
 end
