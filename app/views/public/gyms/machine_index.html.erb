@@ -1,0 +1,30 @@
+<div class="container">
+    <% @machines. each do |machine| %>
+  <div class="row my-5 border-bottom border-dark">
+    <div class="col-4">
+      <%= image_tag machine.get_machine_image(300,300), class:"mb-5" %>
+    </div>
+    <div class="col-8">
+      <table style="height: 250px">
+        <thead>
+        <tr>
+          <th class="h1">【<%= machine.machine_name %>】</th>
+          <td class="h3"><%= machine.machine_status_i18n %></td>
+        </tr>
+        </thead>
+        <tbody class="h3">
+          <tr>
+            <td>説明：<%= machine.explanation %></td>
+          </tr>
+          <tr>
+            <td>部位：<%= machine.site.site_name %></td>
+          </tr>
+          <tr>
+            <td><%= link_to "このマシンを使用したトレーニングを投稿する", root_path, class:"btn btn-success" %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    <% end %>
+</div>

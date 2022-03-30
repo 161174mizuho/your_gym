@@ -4,5 +4,11 @@ class Public::GymsController < ApplicationController
   end
 
   def show
+    @gym = Admin.find(params[:id])
+  end
+
+  def machine_index
+    @gym = Admin.find(params[:id])
+    @machines = @gym.machines.all
   end
 end

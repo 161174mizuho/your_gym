@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :posts, only: [:new, :index, :show, :destroy]
-    resources :gyms, only: [:index, :show]
+    resources :gyms, only: [:index, :show] do
+      member do
+        get "machine_index"
+      end
+    end
     resources :members, only: [:new, :show, :edit, :update]
   end
 

@@ -1,2 +1,20 @@
-<h1>Public::Gyms#show</h1>
-<p>Find me in app/views/public/gyms/show.html.erb</p>
+<div class="container">
+  <div class="row my-5">
+    <h1><%= @gym.gym_name %></h1>
+  </div>
+  <div class="row mb-5">
+    <div class="col-6">
+      <%= image_tag @gym.get_gym_image(500,500) %>
+    </div>
+    <div class="col-6">
+      <div class="gym mb-5">
+        <h4 class="mb-2 border-bottom border-dark">店舗情報</h4>
+        <h5 class="mb-5">紹介分のカラムを作成して表示する</h5>
+        <h4 class="my-3 border-bottom border-dark">登録マシン台数</h4>
+        <h5 class="mb-5"><%= @gym.machines.count %>台　<%= link_to "設置マシン一覧を見る", machine_index_public_gym_path %></h5>
+        <h4 class="my-3 border-bottom border-dark">このジムのマシンを使用した投稿</h4>
+        <!--<h5 class="mb-5">件　<= link_to "投稿一覧を見る", public_machines_path %></h5>-->
+      </div>
+    </div>
+  </div>
+</div>
