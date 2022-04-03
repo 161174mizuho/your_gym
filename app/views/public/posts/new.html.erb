@@ -1,2 +1,19 @@
-<h1>Public::Posts#new</h1>
-<p>Find me in app/views/public/posts/new.html.erb</p>
+<div class="container">
+  <div class="row my-5">
+    <div class="col-6">
+      <h1>トレーニング投稿</h1>
+      <%= form_with model: @post, url: public_posts_path, method: :post do |f| %>
+      <p>画像</p>
+        <%= f.file_field :post_image, accept: "image/*" ,class:"mb-3" %>
+      <p>説明</p>
+        <%= f.text_area :sentence, class:"mb-3" %></br>
+        <%= f.hidden_field :machine_id, value: @machine %>
+       <%= f.submit "投稿する", class:"btn btn-success" %>
+      <% end %>
+    </div>
+    <div class="col-6">
+      <h1>選択中のマシン</h1>
+      <!--<= image_tag @machine_id.get_machine_image(100,100) %>-->
+    </div>
+  </div>
+</div>

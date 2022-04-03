@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 }
 
   namespace :public do
-    resources :posts, only: [:new, :index, :show, :destroy]
+    resources :posts, only: [:new, :create, :index, :show, :destroy]
+      
     resources :gyms, only: [:index, :show] do
       member do
         get "machine_index"

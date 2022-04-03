@@ -20,7 +20,7 @@
             <td>部位：<%= machine.site.site_name %></td>
           </tr>
           <tr>
-            <td><%= link_to "このマシンを使用したトレーニングを投稿する", root_path, class:"btn btn-success" %></td>
+              <td><%= link_to "このマシンを使用したトレーニングを投稿する", new_public_post_path(machine_id: machine.id), class:"btn btn-success" %></td>
           </tr>
         </tbody>
       </table>
