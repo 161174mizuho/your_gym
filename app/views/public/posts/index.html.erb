@@ -1,2 +1,19 @@
-<h1>Public::Posts#index</h1>
-<p>Find me in app/views/public/posts/index.html.erb</p>
+<div class="card-list-container py-5">
+  <% @posts.each do |post| %>
+  <div class="card w-50 mx-auto shadow-lg my-5">
+      <%= image_tag post.get_post_image(500,500),class:"card-img-top" %>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-3 d-flex align-items-center justify-content-center">
+            <%= image_tag post.member.get_icon(100,100),class:"my-2 rounded-circle" %>
+        </div>
+        <div class="col-9">
+          <p>使用マシン：<%= post.machine.machine_name %></p>
+          <p><%= post.sentence %></p>
+          <p>ジム：<%= link_to post.machine.admin.gym_name, public_gym_path(post.machine.admin.id) %></p>
+          <p><i class="fa-solid fa-user"></i><%= post.member.name %> | コメント</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>

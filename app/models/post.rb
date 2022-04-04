@@ -1,7 +1,6 @@
 class Post < ApplicationRecord
 
   belongs_to :member
-  belongs_to :admin
   belongs_to :machine
   has_one_attached :post_image
 

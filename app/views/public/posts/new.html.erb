@@ -1,19 +1,26 @@
 <div class="container">
-  <div class="row my-5">
-    <div class="col-6">
+  <div class="row mt-5">
+    <div class="col-5">
       <h1>トレーニング投稿</h1>
+    </div>
+    <div class="col-7">
+      <h1>選択中のマシン</h1>
+      <h3><%= @machine.machine_name %>　部位：<%= @machine.site.site_name %></h3>
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-5 d-flex align-items-center justify-content-center">
       <%= form_with model: @post, url: public_posts_path, method: :post do |f| %>
-      <p>画像</p>
+      <h5>画像</h5>
         <%= f.file_field :post_image, accept: "image/*" ,class:"mb-3" %>
-      <p>説明</p>
+      <h5>説明</h5>
         <%= f.text_area :sentence, class:"mb-3" %></br>
-        <%= f.hidden_field :machine_id, value: @machine %>
+        <%= f.hidden_field :machine_id, value: @machine.id %>
        <%= f.submit "投稿する", class:"btn btn-success" %>
       <% end %>
     </div>
-    <div class="col-6">
-      <h1>選択中のマシン</h1>
-      <!--<= image_tag @machine_id.get_machine_image(100,100) %>-->
+    <div class="col-7 d-flex align-items-center justify-content-center">
+      <%= image_tag @machine.get_machine_image(300,300) %>
     </div>
   </div>
 </div>
