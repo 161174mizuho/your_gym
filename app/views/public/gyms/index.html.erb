@@ -7,7 +7,7 @@
     <div class="col-8">
       <h1><%= link_to gym.gym_name, public_gym_path(gym) %></h1></br>
       <h3>登録マシン数 <%= gym.machines.count %> 種類</h3></br>
-      <h3>投稿数 </h3>
+      <h3>投稿数 <%= gym.posts.count %></h3>
     </div>
     </div>
     <% end %>

@@ -1,7 +1,9 @@
 class Post < ApplicationRecord
 
   belongs_to :member
+  belongs_to :admin
   belongs_to :machine
+  has_many :comments ,dependent: :destroy
   has_one_attached :post_image
 
   validates :post_image, presence: true

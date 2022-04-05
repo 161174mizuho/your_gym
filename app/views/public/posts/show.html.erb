@@ -10,4 +10,11 @@
       <%= @post.machine.admin.gym_name %>
     </div>
   </div>
+  <div class="row">
+    <p>コメント件数：<%= @post.comments.count %></p>
+    <%= form_with model: [@post, @comment], url: public_post_comment_index_path, method: :post do |f| %>
+      <%= f.text_area :commnet, rows: '5', placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
+    <% end %>
+  </div>
 </div>

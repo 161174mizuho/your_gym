@@ -5,7 +5,7 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
          
   has_many :posts,dependent: :destroy
-         
+  has_many :comments,dependent: :destroy
   has_one_attached :icon
 
   def get_icon(width, height)

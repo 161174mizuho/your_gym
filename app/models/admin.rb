@@ -9,7 +9,8 @@ class Admin < ApplicationRecord
 
   has_many :sites,dependent: :destroy
   has_many :machines,dependent: :destroy
-
+  has_many :posts,dependent: :destroy
+  
   has_one_attached :gym_image
 
   def get_gym_image(width, height)

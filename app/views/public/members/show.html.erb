@@ -1,21 +1,40 @@
 <div class="container">
-  <div class="row my-5">
-    <div class="col-6 d-flex align-items-center justify-content-center">
-      <%= image_tag @member.get_icon(400,400) %>
-    </div>
-    <div class="col-6">
-    <table class="table">
+  <h1 class="mt-5">会員情報</h1>
+  <div class="row mb-3 d-flex align-items-center justify-content-center">
+      <%= image_tag @member.get_icon(500,500) %>
+  </div>
+  <div class="row d-flex align-items-center justify-content-center">
+    <table class="table", style= "width:60%">
       <tr>
         <th>ユーザー名</th>
         <td><%= @member.name %></td>
+        <td></td>
       </tr>
       <tr>
         <th>メールアドレス</th>
         <td><%= @member.email %></td>
+        <td><%= link_to "会員情報編集", edit_public_member_path(@member.id), class:"btn btn-primary" %></td>
       </tr>
     </table>
-      <%= link_to "会員情報編集", edit_public_member_path(@member.id), class:"btn btn-primary" %>
-      <%= link_to "my投稿一覧", public_posts_path, class:"btn btn-warning" %>
-    </div>
   </div>
+  <h1>MY投稿</h1>
+  <div class="card-list-row ">
+    <% @posts.each do |post| %>
+    <div class="card w-50 mx-auto shadow-lg my-5">
+        <%= image_tag post.get_post_image(500,500),class:"card-img-top" %>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3 d-flex align-items-center justify-content-center">
+              <%= image_tag post.member.get_icon(100,100),class:"my-2 rounded-circle" %>
+          </div>
+          <div class="col-9">
+            <p>使用マシン：<%= post.machine.machine_name %></p>
+            <p><%= post.sentence %></p>
+            <p>ジム：<%= link_to post.machine.admin.gym_name, public_gym_path(post.machine.admin.id) %></p>
+            <p><i class="fas fa-user"></i> <%= post.member.name %> | コメント</p>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
+<% end %>

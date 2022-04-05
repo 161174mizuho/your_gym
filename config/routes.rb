@@ -9,13 +9,17 @@ Rails.application.routes.draw do
 }
 
   namespace :public do
-    resources :posts, only: [:new, :create, :index, :destroy]
+    resources :posts, only: [:new, :create, :index, :destroy, :show] do
+      resources :comment, only: [:create]
+    end
+
     resources :gyms, only: [:index, :show] do
       member do
         get "machine_index"
       end
     end
     resources :members, only: [:new, :show, :edit, :update]
+    get "post_index_machine" => "posts#post_index_machine"
   end
 
   scope module: :admin do

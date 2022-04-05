@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_29_153836) do
+ActiveRecord::Schema.define(version: 2022_04_05_145031) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 2022_03_29_153836) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "member_id"
+    t.integer "post_id"
+    t.text "comment"
+  end
+
   create_table "machines", force: :cascade do |t|
     t.integer "admin_id"
     t.integer "site_id"
@@ -80,6 +88,7 @@ ActiveRecord::Schema.define(version: 2022_03_29_153836) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.integer "admin_id"
     t.integer "member_id"
     t.integer "machine_id"
     t.string "post_image"

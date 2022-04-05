@@ -27,6 +27,11 @@
               <%= link_to "会員登録してトレーニングを投稿する", new_member_registration_path, class:"btn btn-success" %></td>
             <% end %>
           </tr>
+            <tr>
+              <td>
+              <%= link_to "このマシンを使用したトレーニング一覧", public_post_index_machine_path(machine_id: machine.id), class:"btn btn-warning text-white" %>
+              </td>
+            </tr>
         </tbody>
       </table>
     </div>
