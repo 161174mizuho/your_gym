@@ -1,20 +1,53 @@
 <div class="container">
   <div class="row my-5">
-    <div class="col-6">
+    <div class="col-6 d-flex align-items-center justify-content-center">
       <%= image_tag @post.get_post_image(500,500) %>
     </div>
     <div class="col-6">
-      <h3>マシン名：<%= @post.machine.machine_name %></h3>
-      <h3>説　　明：</h3>
-      <h3></h3><%= @post.machine.site.site_name %>
-      <%= @post.machine.admin.gym_name %>
+      <div class="post md-3">
+        <h3 class="mb-2 border-bottom border-dark">ジム名</h3>
+        <h4 class="mb-4"><%= @post.machine.admin.gym_name %></h4>
+        <h3 class="mb-2 border-bottom border-dark">マシン名</h3>
+        <h4 class="mb-4"><%= @post.machine.machine_name %></h4>
+        <h3 class="mb-2 border-bottom border-dark">部位</h3>
+        <h4 class="mb-4"><%= @post.machine.site.site_name %></h4>
+        <h4 class="mb-4"><%= @post.sentence %></h4>
+        <h3 class="mb-4 border-bottom border-dark">いいね</h3>
+        <% if member_signed_in? %>
+          <% if @post.good_by?(current_member) %>
+              <%= link_to public_post_good_path(@post), method: :delete do %>
+                <p>♥<%= @post.goods.count %>いいね</p>
+              <% end %>
+            <% else %>
+              <%= link_to public_post_good_path(@post), method: :post do %>
+                <p>♡<%= @post.goods.count %> いいね</p>
+              <% end %>
+          <% end %>
+          <% else %>
+          <h4><%= @post.goods.count %>件</h4>
+        <% end %>
+        <h3 class="mt-4 border-bottom border-dark">コメント数</h3>
+        <h4><%= @post.comments.count %>件</h4>
+          <h3 class="mt-4 border-bottom border-dark">コメント</h3>
+        <% @post.comments.each do |comment| %>
+          <p class="mb-2">
+            <%= image_tag comment.member.get_icon(30,30) %>
+            <%= comment.member.name %>
+            <%= comment.created_at.strftime('%Y/%m/%d') %>
+            <% if comment.member == current_member %>
+              <%= link_to "削除", public_post_comment_path(comment), method: :delete %></br>
+            <% end %>
+            <%= comment.comment %>
+          </p>
+        <% end %>
+        <%= form_with model: [@post, @comment], url: public_post_comment_index_path(@post), method: :post do |f| %>
+          <% if member_signed_in? %>
+            <%= f.text_area :comment, rows: '5', cols:'50', placeholder: "コメントをここに" %></br>
+            <%= f.submit "送信する" , class: "btn btn-success mt-2" %>
+          <% else %>
+            <p>コメントするには会員登録が必要です。</p>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <p>コメント件数：<%= @post.comments.count %></p>
-    <%= form_with model: [@post, @comment], url: public_post_comment_index_path, method: :post do |f| %>
-      <%= f.text_area :commnet, rows: '5', placeholder: "コメントをここに" %>
-      <%= f.submit "送信する" %>
-    <% end %>
-  </div>
-</div>

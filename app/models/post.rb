@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   belongs_to :admin
   belongs_to :machine
   has_many :comments ,dependent: :destroy
+  has_many :goods ,dependent: :destroy
   has_one_attached :post_image
 
   validates :post_image, presence: true
@@ -15,5 +16,9 @@ class Post < ApplicationRecord
       post_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
     post_image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  def good_by?(user)
+    goods.exists?(member_id: member.id)
   end
 end

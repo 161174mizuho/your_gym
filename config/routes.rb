@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :posts, only: [:new, :create, :index, :destroy, :show] do
-      resources :comment, only: [:create]
+      resource :good , only: [:create, :destroy]
+      resources :comment , only: [:create, :destroy]
     end
 
     resources :gyms, only: [:index, :show] do
