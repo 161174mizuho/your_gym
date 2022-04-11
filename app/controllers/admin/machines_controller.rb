@@ -2,6 +2,7 @@ class Admin::MachinesController < Admin::AdminApplicationController
   def new
     @machine = Machine.new
     @machines = current_admin.machines.page(params[:page])
+    @sites = current_admin.sites.all
   end
 
   def index
@@ -11,7 +12,6 @@ class Admin::MachinesController < Admin::AdminApplicationController
   end
 
   def create
-    # @machine = Machine.new
     @machines = Machine.all
     @machine = Machine.new(machine_params)
     @machine.admin_id = current_admin.id

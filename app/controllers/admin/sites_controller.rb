@@ -12,7 +12,6 @@ class Admin::SitesController < Admin::AdminApplicationController
   end
 
   def create
-    # @site = Site.new
     @sites = Site.page(params[:page])
     @site = Site.new(site_params)
     @site.admin_id = current_admin.id

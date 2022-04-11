@@ -43,10 +43,13 @@
         <%= form_with model: [@post, @comment], url: public_post_comment_index_path(@post), method: :post do |f| %>
           <% if member_signed_in? %>
             <%= f.text_area :comment, rows: '5', cols:'50', placeholder: "コメントをここに" %></br>
-            <%= f.submit "送信する" , class: "btn btn-success mt-2" %>
+            <%= f.submit "送信する" , class: "btn btn-success mt-2" %> 
           <% else %>
             <p>コメントするには会員登録が必要です。</p>
           <% end %>
+        <% end %>
+        <% if current_member == @post.member %>
+            <%= link_to "投稿を削除する", public_post_path(post), method: :delete, class:"btn btn-danger mt-2 ml-2" %>
         <% end %>
       </div>
     </div>
