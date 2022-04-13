@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
     @post.member_id = current_member.id
     @post.admin_id = Machine.find(params[:post][:machine_id]).admin_id
     if @post.save
-      redirect_to public_posts_path
+      redirect_to public_post_path(@post)
     else
       @machine = Machine.find(params[:post][:machine_id])
       render :new

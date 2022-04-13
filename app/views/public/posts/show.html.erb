@@ -35,7 +35,7 @@
             <%= comment.member.name %>
             <%= comment.created_at.strftime('%Y/%m/%d') %>
             <% if comment.member == current_member %>
-              <%= link_to "削除", public_post_comment_path(comment), method: :delete %></br>
+              <%= link_to "コメントを削除", public_post_comment_path(comment), method: :delete %></br>
             <% end %>
             <%= comment.comment %>
           </p>
